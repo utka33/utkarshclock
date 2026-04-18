@@ -1,0 +1,32 @@
+# utkarshclock
+h
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spotify Auth — Utkarsh Clock</title>
+  <style>
+    body { background:#111; color:#eee; font-family:sans-serif; 
+           padding:40px; text-align:center; }
+    .code { background:#1a1a3a; border:1px solid #5a9fdf; border-radius:8px;
+            padding:16px; font-size:14px; word-break:break-all;
+            color:#7ec8ff; margin:20px 0; }
+    button { background:#1a44e0; color:#fff; border:none; padding:12px 24px;
+             border-radius:8px; font-size:14px; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <h2>✅ Spotify Authorized!</h2>
+  <p>Copy the code below and paste it into your clock's web panel.</p>
+  <div class="code" id="code">Loading...</div>
+  <button onclick="copy()">Copy Code</button>
+  <script>
+    const p = new URLSearchParams(window.location.search);
+    const code = p.get('code') || 'No code found — auth may have failed';
+    document.getElementById('code').textContent = code;
+    function copy() {
+      navigator.clipboard.writeText(code);
+      document.querySelector('button').textContent = 'Copied!';
+    }
+  </script>
+</body>
+</html>
